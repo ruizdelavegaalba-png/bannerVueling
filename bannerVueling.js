@@ -125,6 +125,9 @@ function iniciarBannerVueling() {
     inputEmail.addEventListener("input", () => {
       validarEmail(inputEmail, mensaje, botonSuscribir);
     });
+    botonCerrar.addEventListener("click", () => {
+      cerrarPopup(popup);
+    });
     document.body.appendChild(popup);
     return popup;
 }
@@ -161,6 +164,15 @@ function iniciarBannerVueling() {
 
   function mostrarPopup(popup) {
     popup.style.transform = "translateX(0)";
+  }
+
+  function cerrarPopup(popup) {
+    popup.style.transform = "translateX(120%)";
+
+    setTimeout(() => {
+      popup.remove();
+      document.getElementById(idEstilos).remove();
+    }, duracionAnimacion);
   }
 
 crearEstilos();
