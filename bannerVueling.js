@@ -11,6 +11,7 @@ function iniciarBannerVueling() {
   const grisClaro = "#CCCCCC";
   const radioBoton = "1.375rem";
   const fuente = "VuelingPilcrow, Arial, sans-serif";
+  const regexEmail = /^[\w.+-]+@[\w-]+\.[\w.-]+$/;
 
   if (document.getElementById(idPopup)) {
     console.log("El banner ya está en la página.");
@@ -106,10 +107,13 @@ function iniciarBannerVueling() {
     inputEmail.placeholder = "Tu correo electrónico";
 
     const mensaje = document.createElement("p");
+    mensaje.style.marginTop = "8px";
+    mensaje.style.fontSize = "13px";
 
     const botonSuscribir = document.createElement("a");
     botonSuscribir.href = urlNewsletter;
     botonSuscribir.textContent = "Quiero suscribirme";
+    desactivarBoton(botonSuscribir);
 
     popup.appendChild(botonCerrar);
     popup.appendChild(titulo);
@@ -118,9 +122,42 @@ function iniciarBannerVueling() {
     popup.appendChild(mensaje);
     popup.appendChild(botonSuscribir);
 
+    inputEmail.addEventListener("input", () => {
+      validarEmail(inputEmail, mensaje, botonSuscribir);
+    });
     document.body.appendChild(popup);
     return popup;
 }
+
+  function validarEmail(inputEmail, mensaje, botonSuscribir) {
+    const email = inputEmail.value.trim();
+
+    if (email === "") {
+      inputEmail.style.borderColor = grisClaro;
+      mensaje.textContent = "";
+      desactivarBoton(botonSuscribir);
+    } else if (regexEmail.test(email)) {
+      inputEmail.style.borderColor = "green";
+      mensaje.style.color = "green";
+      mensaje.textContent = "Email válido";
+      activarBoton(botonSuscribir);
+    } else {
+      inputEmail.style.borderColor = "red";
+      mensaje.style.color = "red";
+      mensaje.textContent = "Introduce un email válido (ejemplo@correo.com)";
+      desactivarBoton(botonSuscribir);
+    }
+  }
+
+  function activarBoton(botonSuscribir) {
+    botonSuscribir.style.opacity = "1";
+    botonSuscribir.style.pointerEvents = "auto";
+  }
+
+  function desactivarBoton(botonSuscribir) {
+    botonSuscribir.style.opacity = "0.5";
+    botonSuscribir.style.pointerEvents = "none";
+  }
 
 crearEstilos();
     const popup = crearPopup();
