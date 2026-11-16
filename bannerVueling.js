@@ -159,9 +159,15 @@ function iniciarBannerVueling() {
     botonSuscribir.style.pointerEvents = "none";
   }
 
+  function mostrarPopup(popup) {
+    popup.style.transform = "translateX(0)";
+  }
+
 crearEstilos();
     const popup = crearPopup();
-    console.log("Pop-up creado");
+  setTimeout(() => {
+    mostrarPopup(popup);
+  }, retardo);
 }
 
 iniciarBannerVueling();
