@@ -1,4 +1,4 @@
-# Vueling Newsletter Banner ✈️
+# Vueling Newsletter Banner 
 
 A **pure JavaScript (Vanilla JS)** script that injects a newsletter subscription pop-up into the [Vueling](https://www.vueling.com/es) home page, following its visual identity and without modifying the website's source code.
 
@@ -6,7 +6,7 @@ This project simulates a real **CRO (Conversion Rate Optimization)** task and wa
 
 ---
 
-## 🚀 How to use
+## How to use
 
 1. Open [https://www.vueling.com/es](https://www.vueling.com/es) in Google Chrome.
 2. Open the Console with `Ctrl + Shift + J`.
@@ -16,7 +16,7 @@ This project simulates a real **CRO (Conversion Rate Optimization)** task and wa
 
 ---
 
-## ✅ Features
+## Features
 
 - Pop-up created and inserted into the DOM entirely with JavaScript.
 - CSS styles injected from the script itself.
@@ -30,7 +30,7 @@ This project simulates a real **CRO (Conversion Rate Optimization)** task and wa
 
 ---
 
-## 🎨 Design
+## Design
 
 | Element | Value |
 |---|---|
@@ -45,7 +45,7 @@ Colors and font were taken from the Vueling website using the Chrome Inspector.
 
 ---
 
-## 🧩 Code structure
+## Code structure
 
 | Function | What it does |
 |---|---|
@@ -59,7 +59,7 @@ Colors and font were taken from the Vueling website using the Chrome Inspector.
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 - JavaScript (Vanilla JS)
 - CSS (injected from JavaScript)
@@ -67,7 +67,7 @@ Colors and font were taken from the Vueling website using the Chrome Inspector.
 
 ---
 
-## 🌿 Branches
+## Branches
 
 The project was developed feature by feature, with one branch per step:
 
@@ -82,8 +82,15 @@ The project was developed feature by feature, with one branch per step:
 | `docs/readme` | Project documentation |
 
 ---
+## Preview
+<img width="482" height="378" alt="Captura de pantalla 2026-11-16 114241" src="https://github.com/user-attachments/assets/fed8a22f-6da9-4052-971f-20ea48e8a810" />
+<img width="477" height="427" alt="Captura de pantalla 2026-11-16 114303" src="https://github.com/user-attachments/assets/07646f02-477c-416e-8f29-518a53980d35" />
+<img width="1892" height="910" alt="Captura de pantalla 2026-11-16 114340" src="https://github.com/user-attachments/assets/e2f970b2-a41d-446d-ac7e-214bedd1aeba" />
 
-## 👩‍💻 Author
+
+---
+
+## Author
 
 **Alba Ruiz de la Vega**
 Higher Vocational Degree in Web Application Development (DAW)
