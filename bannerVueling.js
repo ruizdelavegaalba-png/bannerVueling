@@ -10,6 +10,7 @@ function iniciarBannerVueling() {
   const blanco = "#FFFFFF";
   const grisClaro = "#CCCCCC";
   const radioBoton = "1.375rem";
+  const fuente = "VuelingPilcrow, Arial, sans-serif";
 
   if (document.getElementById(idPopup)) {
     console.log("El banner ya está en la página.");
@@ -33,7 +34,7 @@ function iniciarBannerVueling() {
         border-top: 6px solid ${amarillo};
         border-radius: 1rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        font-family: inherit;
+        font-family: ${fuente};
         transform: translateX(120%);
         transition: transform ${duracionAnimacion}ms ease-out;
       }
@@ -41,6 +42,7 @@ function iniciarBannerVueling() {
       #${idPopup} h2 {
         margin: 0 0 10px;
         font-size: 22px;
+        text-transform: uppercase;
       }
 
       #${idPopup} p {
@@ -53,7 +55,7 @@ function iniciarBannerVueling() {
         width: 100%;
         padding: 12px;
         box-sizing: border-box;
-        font-family: inherit;
+        font-family: ${fuente};
         font-size: 15px;
         border: 2px solid ${grisClaro};
         border-radius: 8px;
@@ -69,6 +71,7 @@ function iniciarBannerVueling() {
         color: ${negro};
         background-color: ${amarillo};
         border-radius: ${radioBoton};
+        text-transform: uppercase;
       }
 
       #${idPopup} button {
@@ -78,14 +81,50 @@ function iniciarBannerVueling() {
         border: none;
         background: none;
         font-size: 22px;
+        font-family: ${fuente};
         cursor: pointer;
       }
     `;
     document.head.appendChild(estilos);
   }
 
-  crearEstilos();
-  console.log("Estilos del banner cargados");
+  function crearPopup() {
+    const popup = document.createElement("div");
+    popup.id = idPopup;
+
+    const botonCerrar = document.createElement("button");
+    botonCerrar.textContent = "✕";
+
+    const titulo = document.createElement("h2");
+    titulo.textContent = "¡Vuela por menos con nuestra newsletter!";
+
+    const texto = document.createElement("p");
+    texto.textContent = "Suscríbete y recibe antes que nadie nuestras ofertas exclusivas, descuentos en vuelos y las mejores ideas para tu próximo viaje.";
+
+    const inputEmail = document.createElement("input");
+    inputEmail.type = "email";
+    inputEmail.placeholder = "Tu correo electrónico";
+
+    const mensaje = document.createElement("p");
+
+    const botonSuscribir = document.createElement("a");
+    botonSuscribir.href = urlNewsletter;
+    botonSuscribir.textContent = "Quiero suscribirme";
+
+    popup.appendChild(botonCerrar);
+    popup.appendChild(titulo);
+    popup.appendChild(texto);
+    popup.appendChild(inputEmail);
+    popup.appendChild(mensaje);
+    popup.appendChild(botonSuscribir);
+
+    document.body.appendChild(popup);
+    return popup;
+}
+
+crearEstilos();
+    const popup = crearPopup();
+    console.log("Pop-up creado");
 }
 
 iniciarBannerVueling();
