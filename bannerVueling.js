@@ -1,28 +1,28 @@
-function iniciarBannerVueling() {
-  const idPopup = "vy-newsletter-popup";
-  const idEstilos = "vy-newsletter-estilos";
-  const urlNewsletter = "https://www.vueling.com/es/servicios-vueling/mas-servicios-vueling/newsletter-vuela";
-  const retardo = 3000;
-  const duracionAnimacion = 500;
+function initVuelingBanner() {
+  const popupId = "vy-newsletter-popup";
+  const stylesId = "vy-newsletter-styles";
+  const newsletterUrl = "https://www.vueling.com/es/servicios-vueling/mas-servicios-vueling/newsletter-vuela";
+  const delay = 3000;
+  const animationDuration = 500;
 
-  const amarillo = "#FFF000";
-  const negro = "#000000";
-  const blanco = "#FFFFFF";
-  const grisClaro = "#CCCCCC";
-  const radioBoton = "1.375rem";
-  const fuente = "VuelingPilcrow, Arial, sans-serif";
-  const regexEmail = /^[\w.+-]+@[\w-]+\.[\w.-]+$/;
+  const yellow = "#FFF000";
+  const black = "#000000";
+  const white = "#FFFFFF";
+  const lightGray = "#CCCCCC";
+  const buttonRadius = "1.375rem";
+  const font = "VuelingPilcrow, Arial, sans-serif";
+  const emailRegex = /^[\w.+-]+@[\w-]+\.[\w.-]+$/;
 
-  if (document.getElementById(idPopup)) {
+  if (document.getElementById(popupId)) {
     console.log("El banner ya está en la página.");
     return;
   }
 
-  function crearEstilos() {
-    const estilos = document.createElement("style");
-    estilos.id = idEstilos;
-    estilos.textContent = `
-      #${idPopup} {
+  function createStyles() {
+    const styles = document.createElement("style");
+    styles.id = stylesId;
+    styles.textContent = `
+      #${popupId} {
         position: fixed;
         right: 24px;
         bottom: 24px;
@@ -30,156 +30,156 @@ function iniciarBannerVueling() {
         width: 360px;
         padding: 28px 24px 24px;
         box-sizing: border-box;
-        background-color: ${blanco};
-        color: ${negro};
-        border-top: 6px solid ${amarillo};
+        background-color: ${white};
+        color: ${black};
+        border-top: 6px solid ${yellow};
         border-radius: 1rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        font-family: ${fuente};
+        font-family: ${font};
         transform: translateX(120%);
-        transition: transform ${duracionAnimacion}ms ease-out;
+        transition: transform ${animationDuration}ms ease-out;
       }
 
-      #${idPopup} h2 {
+      #${popupId} h2 {
         margin: 0 0 10px;
         font-size: 22px;
         text-transform: uppercase;
       }
 
-      #${idPopup} p {
+      #${popupId} p {
         margin: 0 0 16px;
         font-size: 15px;
         line-height: 1.5;
       }
 
-      #${idPopup} input {
+      #${popupId} input {
         width: 100%;
         padding: 12px;
         box-sizing: border-box;
-        font-family: ${fuente};
+        font-family: ${font};
         font-size: 15px;
-        border: 2px solid ${grisClaro};
+        border: 2px solid ${lightGray};
         border-radius: 8px;
       }
 
-      #${idPopup} a {
+      #${popupId} a {
         display: block;
         margin-top: 16px;
         padding: 14px;
         text-align: center;
         text-decoration: none;
         font-weight: bold;
-        color: ${negro};
-        background-color: ${amarillo};
-        border-radius: ${radioBoton};
+        color: ${black};
+        background-color: ${yellow};
+        border-radius: ${buttonRadius};
         text-transform: uppercase;
       }
 
-      #${idPopup} button {
+      #${popupId} button {
         position: absolute;
         top: 10px;
         right: 12px;
         border: none;
         background: none;
         font-size: 22px;
-        font-family: ${fuente};
+        font-family: ${font};
         cursor: pointer;
       }
     `;
-    document.head.appendChild(estilos);
+    document.head.appendChild(styles);
   }
 
-  function crearPopup() {
+  function createPopup() {
     const popup = document.createElement("div");
-    popup.id = idPopup;
+    popup.id = popupId;
 
-    const botonCerrar = document.createElement("button");
-    botonCerrar.textContent = "✕";
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "✕";
 
-    const titulo = document.createElement("h2");
-    titulo.textContent = "¡Vuela por menos con nuestra newsletter!";
+    const title = document.createElement("h2");
+    title.textContent = "¡Vuela por menos con nuestra newsletter!";
 
-    const texto = document.createElement("p");
-    texto.textContent = "Suscríbete y recibe antes que nadie nuestras ofertas exclusivas, descuentos en vuelos y las mejores ideas para tu próximo viaje.";
+    const description = document.createElement("p");
+    description.textContent = "Suscríbete y recibe antes que nadie nuestras ofertas exclusivas, descuentos en vuelos y las mejores ideas para tu próximo viaje.";
 
-    const inputEmail = document.createElement("input");
-    inputEmail.type = "email";
-    inputEmail.placeholder = "Tu correo electrónico";
+    const emailInput = document.createElement("input");
+    emailInput.type = "email";
+    emailInput.placeholder = "Tu correo electrónico";
 
-    const mensaje = document.createElement("p");
-    mensaje.style.marginTop = "8px";
-    mensaje.style.fontSize = "13px";
+    const message = document.createElement("p");
+    message.style.marginTop = "8px";
+    message.style.fontSize = "13px";
 
-    const botonSuscribir = document.createElement("a");
-    botonSuscribir.href = urlNewsletter;
-    botonSuscribir.textContent = "Quiero suscribirme";
-    desactivarBoton(botonSuscribir);
+    const subscribeButton = document.createElement("a");
+    subscribeButton.href = newsletterUrl;
+    subscribeButton.textContent = "Quiero suscribirme";
+    disableButton(subscribeButton);
 
-    popup.appendChild(botonCerrar);
-    popup.appendChild(titulo);
-    popup.appendChild(texto);
-    popup.appendChild(inputEmail);
-    popup.appendChild(mensaje);
-    popup.appendChild(botonSuscribir);
+    popup.appendChild(closeButton);
+    popup.appendChild(title);
+    popup.appendChild(description);
+    popup.appendChild(emailInput);
+    popup.appendChild(message);
+    popup.appendChild(subscribeButton);
 
-    inputEmail.addEventListener("input", () => {
-      validarEmail(inputEmail, mensaje, botonSuscribir);
+    emailInput.addEventListener("input", () => {
+      validateEmail(emailInput, message, subscribeButton);
     });
-    botonCerrar.addEventListener("click", () => {
-      cerrarPopup(popup);
+    closeButton.addEventListener("click", () => {
+      closePopup(popup);
     });
     document.body.appendChild(popup);
     return popup;
 }
 
-  function validarEmail(inputEmail, mensaje, botonSuscribir) {
-    const email = inputEmail.value.trim();
+  function validateEmail(emailInput, message, subscribeButton) {
+    const email = emailInput.value.trim();
 
     if (email === "") {
-      inputEmail.style.borderColor = grisClaro;
-      mensaje.textContent = "";
-      desactivarBoton(botonSuscribir);
-    } else if (regexEmail.test(email)) {
-      inputEmail.style.borderColor = "green";
-      mensaje.style.color = "green";
-      mensaje.textContent = "Email válido";
-      activarBoton(botonSuscribir);
+      emailInput.style.borderColor = lightGray;
+      message.textContent = "";
+      disableButton(subscribeButton);
+    } else if (emailRegex.test(email)) {
+      emailInput.style.borderColor = "green";
+      message.style.color = "green";
+      message.textContent = "Email válido";
+      enableButton(subscribeButton);
     } else {
-      inputEmail.style.borderColor = "red";
-      mensaje.style.color = "red";
-      mensaje.textContent = "Introduce un email válido (ejemplo@correo.com)";
-      desactivarBoton(botonSuscribir);
+      emailInput.style.borderColor = "red";
+      message.style.color = "red";
+      message.textContent = "Introduce un email válido (ejemplo@correo.com)";
+      disableButton(subscribeButton);
     }
   }
 
-  function activarBoton(botonSuscribir) {
-    botonSuscribir.style.opacity = "1";
-    botonSuscribir.style.pointerEvents = "auto";
+  function enableButton(subscribeButton) {
+    subscribeButton.style.opacity = "1";
+    subscribeButton.style.pointerEvents = "auto";
   }
 
-  function desactivarBoton(botonSuscribir) {
-    botonSuscribir.style.opacity = "0.5";
-    botonSuscribir.style.pointerEvents = "none";
+  function disableButton(subscribeButton) {
+    subscribeButton.style.opacity = "0.5";
+    subscribeButton.style.pointerEvents = "none";
   }
 
-  function mostrarPopup(popup) {
+  function showPopup(popup) {
     popup.style.transform = "translateX(0)";
   }
 
-  function cerrarPopup(popup) {
+  function closePopup(popup) {
     popup.style.transform = "translateX(120%)";
 
     setTimeout(() => {
       popup.remove();
-      document.getElementById(idEstilos).remove();
-    }, duracionAnimacion);
+      document.getElementById(stylesId).remove();
+    }, animationDuration);
   }
 
-crearEstilos();
-    const popup = crearPopup();
+createStyles();
+    const popup = createPopup();
   setTimeout(() => {
-    mostrarPopup(popup);
-  }, retardo);
+    showPopup(popup);
+  }, delay);
 }
 
-iniciarBannerVueling();
+initVuelingBanner();

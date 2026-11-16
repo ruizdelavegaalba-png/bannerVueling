@@ -49,13 +49,13 @@ Colors and font were taken from the Vueling website using the Chrome Inspector.
 
 | Function | What it does |
 |---|---|
-| `iniciarBannerVueling()` | Main function that contains all the code |
-| `crearEstilos()` | Creates a `<style>` tag and adds it to the `<head>` |
-| `crearPopup()` | Creates the pop-up HTML and adds it to the `<body>` |
-| `validarEmail()` | Checks the email with a regular expression |
-| `activarBoton()` / `desactivarBoton()` | Enable or disable the subscribe button |
-| `mostrarPopup()` | Slides the pop-up in from the right |
-| `cerrarPopup()` | Slides the pop-up out and removes it from the page |
+| `initVuelingBanner()` | Main function that contains all the code |
+| `createStyles()` | Creates a `<style>` tag and adds it to the `<head>` |
+| `createPopup()` | Creates the pop-up HTML and adds it to the `<body>` |
+| `validateEmail()` | Checks the email with a regular expression |
+| `enableButton()` / `disableButton()` | Enable or disable the subscribe button |
+| `showPopup()` | Slides the pop-up in from the right |
+| `closePopup()` | Slides the pop-up out and removes it from the page |
 
 ---
 
